@@ -6,8 +6,20 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-
+import json
+from base import loadsession, Base
+from ftpUo import FtpUo
 
 class FtpScraperPipeline:
+    def __init__(self) -> None:
+        self.session = loadsession()
+        self.in_db = dict(self.session.query(FtpUo.folder_link, FtpUo.id).all())
+
     def process_item(self, item, spider):
-        return item
+        session = self.session
+        if item['folder_link'] not in self.in_db:
+            folder = FtpUo(item['folder_name'], item['folder_link'])
+            session.add(folder)       
+            session.commit()
+        return item   
+        
