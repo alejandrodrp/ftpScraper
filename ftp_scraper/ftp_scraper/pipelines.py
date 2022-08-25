@@ -6,9 +6,8 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-import json
-from base import loadsession, Base
-from ftpUo import FtpUo
+from ftp_scraper.db.base import loadsession, Base
+from ftp_scraper.db.ftpUo import FtpUo
 
 class FtpScraperPipeline:
     def __init__(self) -> None:

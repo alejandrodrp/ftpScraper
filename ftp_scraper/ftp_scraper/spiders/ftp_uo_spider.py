@@ -2,7 +2,7 @@ import scrapy
 
 class FtpUoSpider(scrapy.Spider):
     name = 'ftp_uo'
-    start_urls = ['http://ftp.uo.edu.cu/Android']
+    start_urls = ['http://ftp.uo.edu.cu/Programacion']
     allowed_domains = ['ftp.uo.edu.cu']
     custom_settings = {
         #'FEED_URI': 'data.json',
